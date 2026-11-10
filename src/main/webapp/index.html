@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -6,24 +6,73 @@
     <link rel="stylesheet" href="styles/main.css" type="text/css"/>
 </head>
 <body>
-<h1>Join our email list</h1>
-<p>To join our email list, enter your name and
-    email address below.</p>
+<img src="styles/img/logo.png" alt="Murach Logo" id="logo">
 
-<form action="emailList" method="post">
+<h1>Survey</h1>
+<p>If you have a moment, we'd appreciate it if you would fill out this survey.</p>
+
+<form action="survey" method="post">
     <input type="hidden" name="action" value="add">
 
-    <label>Email:</label>
-    <input type="email" name="email" required><br>
+    <h2>Your information:</h2>
 
-    <label>First Name:</label>
-    <input type="text" name="firstName" required><br>
+    <p>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+    </p>
 
-    <label>Last Name:</label>
-    <input type="text" name="lastName" required><br>
+    <p>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+    </p>
 
-    <label>&nbsp;</label>
-    <input type="submit" value="Join Now" id="submit">
+    <p>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </p>
+
+    <p>
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" name="date_of_birth">
+    </p>
+
+    <h2>How did you hear about us?</h2>
+    <p>
+        <input type="radio" name="hear_about" id="hear_search" value="search_engine" checked>
+        <label for="hear_search" class="inline">Search engine</label>
+
+        <input type="radio" name="hear_about" id="hear_word" value="word">
+        <label for="hear_word" class="inline">Word of mouth</label>
+
+        <input type="radio" name="hear_about" id="hear_social" value="social">
+        <label for="hear_social" class="inline">Social Media</label>
+
+        <input type="radio" name="hear_about" id="hear_other" value="other">
+        <label for="hear_other" class="inline">Other</label>
+    </p>
+
+    <h2>Would you like to receive announcements<br>about new CDs and special offers?</h2>
+    <p>
+        <input type="checkbox" id="wants_updates" name="wants_updates" value="YES, I'd like that.">
+        <label for="wants_updates" class="inline">YES, I'd like that.</label>
+    </p>
+    <p>
+        <input type="checkbox" id="wants_announcements" name="wants_announcements" value="YES, please send me email announcements.">
+        <label for="wants_announcements" class="inline">YES, please send me email announcements.</label>
+    </p>
+
+    <p>
+        <label for="contact" class="wide-label">Please contact me by:</label>
+        <select name="contact" id="contact">
+            <option value="or">Email or postal mail</option>
+            <option value="email">Email only</option>
+            <option value="postal">Postal mail only</option>
+        </select>
+    </p>
+
+    <p>
+        <input type="submit" value="Submit" id="submit">
+    </p>
 </form>
 </body>
 </html>

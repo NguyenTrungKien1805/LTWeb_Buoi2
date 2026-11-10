@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.net.URI;
 
-public class DBUntil {
+public class DBUtil {
 
     private static String env(String key, String def) {
         String v = System.getenv(key);
@@ -25,7 +25,6 @@ public class DBUntil {
             if (dbUrl.startsWith("postgresql://")) {
                 try {
                     URI uri = URI.create(dbUrl);
-
                     String userInfo = uri.getUserInfo();
                     String username = userInfo.split(":", 2)[0];
                     String password = userInfo.split(":", 2)[1];
@@ -36,7 +35,6 @@ public class DBUntil {
                             + uri.getPath() + "?sslmode=require";
 
                     return DriverManager.getConnection(url, username, password);
-
                 } catch (Exception e) {
                     throw new SQLException("DB_URL không hợp lệ", e);
                 }
@@ -51,7 +49,7 @@ public class DBUntil {
 
         String host = env("DB_HOST", "localhost");
         String port = env("DB_PORT", "5432");
-        String dbName = env("DB_NAME", "emaildb");
+        String dbName = env("DB_NAME", "surveyDB");
         String ssl = env("DB_SSL", "disable");
 
         String url = "jdbc:postgresql://" + host + ":"

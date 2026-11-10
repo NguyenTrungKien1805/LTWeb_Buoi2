@@ -6,27 +6,32 @@
     <title>Murach's Java Servlets and JSP</title>
     <link rel="stylesheet" href="styles/main.css" type="text/css"/>
 </head>
-
 <body>
-<h1>Thanks for joining our email list</h1>
+<img src="styles/img/logo.png" alt="Murach Logo" id="logo">
+
+<h1>Thanks for filling out our survey</h1>
 
 <p>Here is the information that you entered:</p>
 
-<label>Email:</label>
-<span>${user.email}</span><br>
-<label>First Name:</label>
-<span>${user.firstName}</span><br>
-<label>Last Name:</label>
-<span>${user.lastName}</span><br>
+<!-- Thông tin cá nhân từ User bean -->
+<p><label>First Name:</label><span>${user.firstName}</span></p>
+<p><label>Last Name:</label><span>${user.lastName}</span></p>
+<p><label>Email:</label><span>${user.email}</span></p>
+<p><label>Date of Birth:</label><span>${user.dateOfBirth}</span></p>
 
-<p>To enter another email address, click on the Back
-    button in your browser or the Return button shown
-    below.</p>
+<!-- Thông tin khảo sát từ Survey bean -->
+<h2>How did you hear about us?</h2>
+<p><label>Heard From:</label><span>${survey.hearAbout}</span></p>
 
-<form action="" method="get">
-    <input type="hidden" name="action" value="join">
-    <input type="submit" value="Return">
+<h2>Announcements:</h2>
+<p><label>Updates:</label><span>${survey.wantUpdate}</span></p>
+<p><label class="wide-label">Announcements:</label><span>${survey.wantAnnouncement}</span></p>
+
+<h2>Contact preferences:</h2>
+<p><label class="wide-label">Contact via:</label><span>${survey.contact}</span></p>
+
+<form action="index.html" method="get">
+    <input type="submit" value="Return" id="submit">
 </form>
-
 </body>
 </html>
