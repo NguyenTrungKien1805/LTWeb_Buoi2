@@ -24,7 +24,7 @@
 <p><label>Heard From:</label><span>${survey.hearAbout}</span></p>
 
 <h2>Announcements:</h2>
-<p><label>Updates:</label><span>${survey.wantUpdate}</span></p>
+<p><label class="wide-label">Updates:</label><span>${survey.wantUpdate}</span></p>
 <p><label class="wide-label">Announcements:</label><span>${survey.wantAnnouncement}</span></p>
 
 <h2>Contact preferences:</h2>

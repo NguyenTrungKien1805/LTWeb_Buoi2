@@ -22,19 +22,16 @@ h2, p, br {
     clear: both;
 }
 
-/* Label tiêu chuẩn cho ô nhập ngắn ở index.html (8em) */
 label {
     float: left;
     width: 8em;
     margin-bottom: 0.5em;
 }
 
-/* Label dành riêng cho dòng dài ở index hoặc nhờ bên thanks.jsp */
 label.wide-label {
-    width: 13em;
+    width: 8em;
 }
 
-/* Reset float cho nhãn radio / checkbox */
 label.inline {
     float: none;
     width: auto;

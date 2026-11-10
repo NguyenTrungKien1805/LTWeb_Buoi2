@@ -16,12 +16,14 @@ public class DBUtil {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            throw new SQLException(e);
+            throw new SQLException("PostgreSQL Driver not found!", e);
         }
 
+        // Lấy biến môi trường DB_URL (dùng trên Render / Neon)
         String dbUrl = System.getenv("DB_URL");
 
         if (dbUrl != null && !dbUrl.isBlank()) {
+            // Trường hợp 1: Nhận URL dạng postgresql:// từ Neon/Render
             if (dbUrl.startsWith("postgresql://")) {
                 try {
                     URI uri = URI.create(dbUrl);
@@ -29,6 +31,7 @@ public class DBUtil {
                     String username = userInfo.split(":", 2)[0];
                     String password = userInfo.split(":", 2)[1];
 
+                    // Tạo JDBC URL với sslmode=require bắt buộc cho Neon
                     String url = "jdbc:postgresql://"
                             + uri.getHost() + ":"
                             + (uri.getPort() == -1 ? 5432 : uri.getPort())
@@ -36,10 +39,11 @@ public class DBUtil {
 
                     return DriverManager.getConnection(url, username, password);
                 } catch (Exception e) {
-                    throw new SQLException("DB_URL không hợp lệ", e);
+                    throw new SQLException("Cấu hình DB_URL không hợp lệ!", e);
                 }
             }
 
+            // Trường hợp 2: Nhận URL dạng jdbc:postgresql:// truyền thống
             return DriverManager.getConnection(
                     dbUrl,
                     env("DB_USER", "postgres"),
@@ -47,9 +51,10 @@ public class DBUtil {
             );
         }
 
+        // Trường hợp 3: Chạy localhost ở môi trường Dev máy cá nhân
         String host = env("DB_HOST", "localhost");
         String port = env("DB_PORT", "5432");
-        String dbName = env("DB_NAME", "surveyDB");
+        String dbName = env("DB_NAME", "emaildb");
         String ssl = env("DB_SSL", "disable");
 
         String url = "jdbc:postgresql://" + host + ":"
