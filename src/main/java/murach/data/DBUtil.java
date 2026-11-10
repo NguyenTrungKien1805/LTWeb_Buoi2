@@ -54,7 +54,7 @@ public class DBUtil {
         // Trường hợp 3: Chạy localhost ở môi trường Dev máy cá nhân
         String host = env("DB_HOST", "localhost");
         String port = env("DB_PORT", "5432");
-        String dbName = env("DB_NAME", "emaildb");
+        String dbName = env("DB_NAME", "surveyDB");
         String ssl = env("DB_SSL", "disable");
 
         String url = "jdbc:postgresql://" + host + ":"
